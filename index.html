@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clientes</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1>Clientes</h1>
+      <button id="btn-novo" class="btn btn-primary">+ Novo cliente</button>
+    </header>
+
+    <section class="stats">
+      <div class="stat-card">
+        <span class="stat-value" id="stat-total">0</span>
+        <span class="stat-label">Clientes</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-andamento">0</span>
+        <span class="stat-label">Em andamento</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-concluido">0</span>
+        <span class="stat-label">Concluídos</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-pendente">R$ 0</span>
+        <span class="stat-label">A receber</span>
+      </div>
+    </section>
+
+    <section class="toolbar">
+      <input type="text" id="busca" placeholder="Buscar por nome, empresa ou serviço..." />
+      <select id="filtro-status">
+        <option value="">Todos os status</option>
+        <option value="andamento">Em andamento</option>
+        <option value="concluido">Concluído</option>
+        <option value="pausado">Pausado</option>
+      </select>
+    </section>
+
+    <section class="table-wrap">
+      <table id="tabela-clientes">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Contato</th>
+            <th>Empresa</th>
+            <th>Serviço</th>
+            <th>Status</th>
+            <th>Valor</th>
+            <th>Pagamento</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tbody-clientes"></tbody>
+      </table>
+      <p id="vazio" class="vazio" hidden>Nenhum cliente cadastrado ainda. Clique em "Novo cliente" para começar.</p>
+    </section>
+  </div>
+
+  <div id="modal-overlay" class="modal-overlay" hidden>
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modal-title">Novo cliente</h2>
+        <button id="btn-fechar" class="btn-icon" aria-label="Fechar">&times;</button>
+      </div>
+      <form id="form-cliente">
+        <input type="hidden" id="cliente-id" />
+        <div class="form-grid">
+          <label class="field">
+            <span>Nome *</span>
+            <input type="text" id="f-nome" required />
+          </label>
+          <label class="field">
+            <span>Empresa</span>
+            <input type="text" id="f-empresa" />
+          </label>
+          <label class="field">
+            <span>Telefone</span>
+            <input type="text" id="f-telefone" placeholder="(11) 99999-9999" />
+          </label>
+          <label class="field">
+            <span>Email</span>
+            <input type="email" id="f-email" />
+          </label>
+          <label class="field">
+            <span>Serviço</span>
+            <input type="text" id="f-servico" placeholder="Ex: Site institucional" />
+          </label>
+          <label class="field">
+            <span>Status do projeto</span>
+            <select id="f-status">
+              <option value="andamento">Em andamento</option>
+              <option value="concluido">Concluído</option>
+              <option value="pausado">Pausado</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Valor (R$)</span>
+            <input type="number" id="f-valor" min="0" step="0.01" placeholder="0,00" />
+          </label>
+          <label class="field">
+            <span>Pagamento</span>
+            <select id="f-pagamento">
+              <option value="pendente">Pendente</option>
+              <option value="pago">Pago</option>
+              <option value="parcial">Parcial</option>
+            </select>
+          </label>
+          <label class="field field-full">
+            <span>Observações</span>
+            <textarea id="f-obs" rows="3" placeholder="Anotações sobre o cliente..."></textarea>
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-excluir" class="btn btn-danger" hidden>Excluir</button>
+          <div class="modal-footer-right">
+            <button type="button" id="btn-cancelar" class="btn btn-secondary">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
