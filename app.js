@@ -54,7 +54,14 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
-let clientes = loadClientes();
+function mesclarSeed(existentes, seed) {
+  const idsExistentes = new Set(existentes.map((c) => c.id));
+  const novos = seed.filter((c) => !idsExistentes.has(c.id));
+  return existentes.concat(novos);
+}
+
+let clientes = mesclarSeed(loadClientes(), typeof SEED_CLIENTES !== "undefined" ? SEED_CLIENTES : []);
+saveClientes(clientes);
 
 function render() {
   const termo = els.busca.value.trim().toLowerCase();
