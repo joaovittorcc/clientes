@@ -85,6 +85,7 @@
             <th>Nicho</th>
             <th>Cidade</th>
             <th>Telefone</th>
+            <th>Redes sociais</th>
             <th>Avaliação</th>
             <th>Prioridade</th>
             <th>Status</th>
@@ -123,6 +124,10 @@
           <label class="field">
             <span>Telefone</span>
             <input type="text" id="l-telefone" placeholder="+55 64 99999-9999" />
+          </label>
+          <label class="field">
+            <span>Redes sociais</span>
+            <input type="text" id="l-redes-sociais" placeholder="@perfil ou link" />
           </label>
           <label class="field">
             <span>Avaliação (0-5)</span>
@@ -182,7 +187,7 @@
       </div>
       <div class="import-body">
         <p class="import-hint">
-          Cabeçalho esperado: <code>nome,nicho,cidade,telefone,avaliacao,n_avaliacoes,prioridade,site_confirmado,status</code>.
+          Cabeçalho esperado: <code>nome,nicho,cidade,telefone,redes_sociais,avaliacao,n_avaliacoes,prioridade,site_confirmado,status,observacoes</code>.
           Leads com o mesmo nome + cidade de um já existente são ignorados.
         </p>
         <input type="file" id="import-file" accept=".csv,text/csv" />

@@ -58,6 +58,14 @@ function waLink(telefone) {
   return digitos ? `https://wa.me/${digitos}` : "";
 }
 
+function redeSocialLink(redesSociais) {
+  if (!redesSociais) return null;
+  const valor = redesSociais.trim();
+  if (/^https?:\/\//i.test(valor)) return { url: valor, label: valor };
+  if (valor.startsWith("@")) return { url: `https://instagram.com/${valor.slice(1)}`, label: valor };
+  return { url: null, label: valor };
+}
+
 let leads = mesclarSeedLeads(loadLeads(), typeof SEED_LEADS !== "undefined" ? SEED_LEADS : []);
 saveLeads(leads);
 
@@ -105,6 +113,12 @@ function renderLista(filtrados) {
       const telefoneHtml = link
         ? `<a class="wa-link" href="${link}" target="_blank" rel="noopener">${escapeHtmlLead(l.telefone)}</a>`
         : "-";
+      const rede = redeSocialLink(l.redes_sociais);
+      const redeSocialHtml = rede
+        ? rede.url
+          ? `<a class="wa-link" href="${rede.url}" target="_blank" rel="noopener">${escapeHtmlLead(rede.label)}</a>`
+          : escapeHtmlLead(rede.label)
+        : "-";
       const avaliacaoHtml =
         l.avaliacao != null
           ? `${l.avaliacao.toFixed(1)}★ <span class="muted">(${l.n_avaliacoes ?? 0})</span>`
@@ -116,6 +130,7 @@ function renderLista(filtrados) {
       <td data-label="Nicho">${escapeHtmlLead(l.nicho) || "-"}</td>
       <td data-label="Cidade">${escapeHtmlLead(l.cidade) || "-"}</td>
       <td data-label="Telefone">${telefoneHtml}</td>
+      <td data-label="Redes sociais">${redeSocialHtml}</td>
       <td data-label="Avaliação" class="avaliacao-cell">${avaliacaoHtml}</td>
       <td data-label="Prioridade"><span class="badge badge-prioridade-${prioridadeSlug}">${escapeHtmlLead(l.prioridade)}</span></td>
       <td data-label="Status"><span class="badge badge-${l.status}">${STATUS_LEAD_LABEL[l.status] || l.status}</span></td>
@@ -197,6 +212,7 @@ function abrirModalLead(lead) {
     document.getElementById("l-nicho").value = lead.nicho || "";
     document.getElementById("l-cidade").value = lead.cidade || "";
     document.getElementById("l-telefone").value = lead.telefone || "";
+    document.getElementById("l-redes-sociais").value = lead.redes_sociais || "";
     document.getElementById("l-avaliacao").value = lead.avaliacao ?? "";
     document.getElementById("l-n-avaliacoes").value = lead.n_avaliacoes ?? "";
     document.getElementById("l-prioridade").value = lead.prioridade || "Média";
@@ -246,6 +262,7 @@ function onSubmitLead(e) {
     nicho: document.getElementById("l-nicho").value.trim(),
     cidade,
     telefone: document.getElementById("l-telefone").value.trim(),
+    redes_sociais: document.getElementById("l-redes-sociais").value.trim(),
     avaliacao: document.getElementById("l-avaliacao").value
       ? Number(document.getElementById("l-avaliacao").value)
       : null,
@@ -390,12 +407,13 @@ function importarLeadsCsv(texto) {
       nicho: (linha.nicho || "").trim(),
       cidade: (linha.cidade || "").trim(),
       telefone: (linha.telefone || "").trim(),
+      redes_sociais: (linha.redes_sociais || "").trim(),
       avaliacao: linha.avaliacao ? Number(linha.avaliacao) : null,
       n_avaliacoes: linha.n_avaliacoes ? Number(linha.n_avaliacoes) : null,
       prioridade: linha.prioridade || "Média",
       site_confirmado: linha.site_confirmado || "A verificar",
       status: linha.status || "a_contatar",
-      observacoes: "",
+      observacoes: (linha.observacoes || "").trim(),
       origem: "csv_import",
       created_at: new Date().toISOString(),
     });

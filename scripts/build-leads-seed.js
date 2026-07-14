@@ -76,13 +76,14 @@ function main() {
     nicho: linha.nicho || "",
     cidade: linha.cidade || "",
     telefone: linha.telefone || "",
+    redes_sociais: linha.redes_sociais || "",
     avaliacao: linha.avaliacao ? Number(linha.avaliacao) : null,
     n_avaliacoes: linha.n_avaliacoes ? Number(linha.n_avaliacoes) : null,
     prioridade: linha.prioridade || "Média",
     site_confirmado: linha.site_confirmado || "A verificar",
     status: linha.status || "a_contatar",
-    observacoes: "",
-    origem: "google_maps",
+    observacoes: linha.observacoes || "",
+    origem: linha.origem || "pesquisa_web",
     created_at: new Date().toISOString(),
   }));
 
