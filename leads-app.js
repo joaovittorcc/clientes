@@ -143,6 +143,7 @@ function atualizarStatsLeads() {
 
 const STATUS_ORDER = ["a_contatar", "contatado", "proposta_enviada", "fechado"];
 const KANBAN_COLUNAS = ["a_contatar", "contatado", "proposta_enviada", "fechado", "perdido"];
+let kanbanColunaAberta = "a_contatar";
 
 function encontrarLead(id) {
   return leads.find((l) => l.id === id);
@@ -479,12 +480,17 @@ function renderKanban(filtrados) {
       })
       .join("");
 
+    const aberta = statusKey === kanbanColunaAberta ? " kanban-col-aberta" : "";
+
     return `
-      <div class="kanban-col">
-        <div class="kanban-col-header">
-          <span>${STATUS_LEAD_LABEL[statusKey]}</span>
-          <span class="kanban-col-count">${cards.length}</span>
-        </div>
+      <div class="kanban-col${aberta}">
+        <button type="button" class="kanban-col-header" data-toggle="${statusKey}">
+          <span class="kanban-col-title">
+            <span>${STATUS_LEAD_LABEL[statusKey]}</span>
+            <span class="kanban-col-count">${cards.length}</span>
+          </span>
+          <span class="kanban-col-chevron">▾</span>
+        </button>
         <div class="kanban-cards">${cardsHtml}</div>
       </div>
     `;
@@ -498,6 +504,13 @@ leadEls.viewKanban.addEventListener("click", (e) => {
   if (idVoltar) return voltarStatus(idVoltar);
   if (idAvancar) return avancarStatus(idAvancar);
   if (idPerder) return mudarStatusLead(idPerder, "perdido");
+
+  const toggle = e.target.closest("[data-toggle]");
+  if (toggle) {
+    const statusKey = toggle.dataset.toggle;
+    kanbanColunaAberta = kanbanColunaAberta === statusKey ? null : statusKey;
+    return renderKanban(leadsFiltrados());
+  }
 
   const card = e.target.closest("[data-abrir]");
   if (card) {
