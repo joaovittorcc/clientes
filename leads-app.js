@@ -177,9 +177,136 @@ function voltarStatus(id) {
   mudarStatusLead(id, STATUS_ORDER[idx - 1]);
 }
 
-function abrirModalLead() {
-  // implementado na etapa de CRUD manual
+const modalLeadEls = {
+  overlay: document.getElementById("modal-lead-overlay"),
+  title: document.getElementById("modal-lead-title"),
+  form: document.getElementById("form-lead"),
+  btnNovo: document.getElementById("btn-novo-lead"),
+  btnFechar: document.getElementById("btn-fechar-lead"),
+  btnCancelar: document.getElementById("btn-cancelar-lead"),
+  btnExcluir: document.getElementById("btn-excluir-lead"),
+};
+
+function abrirModalLead(lead) {
+  modalLeadEls.form.reset();
+  if (lead) {
+    modalLeadEls.title.textContent = "Editar lead";
+    document.getElementById("l-id").value = lead.id;
+    document.getElementById("l-nome").value = lead.nome || "";
+    document.getElementById("l-nicho").value = lead.nicho || "";
+    document.getElementById("l-cidade").value = lead.cidade || "";
+    document.getElementById("l-telefone").value = lead.telefone || "";
+    document.getElementById("l-avaliacao").value = lead.avaliacao ?? "";
+    document.getElementById("l-n-avaliacoes").value = lead.n_avaliacoes ?? "";
+    document.getElementById("l-prioridade").value = lead.prioridade || "Média";
+    document.getElementById("l-site-confirmado").value = lead.site_confirmado || "A verificar";
+    document.getElementById("l-status").value = lead.status || "a_contatar";
+    document.getElementById("l-obs").value = lead.obs || lead.observacoes || "";
+    modalLeadEls.btnExcluir.hidden = false;
+  } else {
+    modalLeadEls.title.textContent = "Novo lead";
+    document.getElementById("l-id").value = "";
+    modalLeadEls.btnExcluir.hidden = true;
+  }
+  modalLeadEls.overlay.hidden = false;
 }
+
+function fecharModalLead() {
+  modalLeadEls.overlay.hidden = true;
+}
+
+function slugifyLead(str) {
+  return (str || "")
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function gerarIdLead(nome, cidade) {
+  const base = `${slugifyLead(nome)}-${slugifyLead(cidade)}` || `lead-${Date.now()}`;
+  let id = base;
+  let contador = 2;
+  while (leads.some((l) => l.id === id)) {
+    id = `${base}-${contador}`;
+    contador++;
+  }
+  return id;
+}
+
+function onSubmitLead(e) {
+  e.preventDefault();
+  const id = document.getElementById("l-id").value;
+  const nome = document.getElementById("l-nome").value.trim();
+  const cidade = document.getElementById("l-cidade").value.trim();
+  const dados = {
+    nome,
+    nicho: document.getElementById("l-nicho").value.trim(),
+    cidade,
+    telefone: document.getElementById("l-telefone").value.trim(),
+    avaliacao: document.getElementById("l-avaliacao").value
+      ? Number(document.getElementById("l-avaliacao").value)
+      : null,
+    n_avaliacoes: document.getElementById("l-n-avaliacoes").value
+      ? Number(document.getElementById("l-n-avaliacoes").value)
+      : null,
+    prioridade: document.getElementById("l-prioridade").value,
+    site_confirmado: document.getElementById("l-site-confirmado").value,
+    status: document.getElementById("l-status").value,
+    observacoes: document.getElementById("l-obs").value.trim(),
+    updated_at: new Date().toISOString(),
+  };
+
+  if (id) {
+    const idx = leads.findIndex((l) => l.id === id);
+    if (idx !== -1) leads[idx] = { ...leads[idx], ...dados };
+  } else {
+    leads.push({
+      id: gerarIdLead(nome, cidade),
+      origem: "manual",
+      created_at: new Date().toISOString(),
+      ...dados,
+    });
+  }
+
+  saveLeads(leads);
+  renderLeads();
+  fecharModalLead();
+}
+
+function excluirLead(id) {
+  if (!confirm("Excluir este lead?")) return;
+  leads = leads.filter((l) => l.id !== id);
+  saveLeads(leads);
+  renderLeads();
+  fecharModalLead();
+}
+
+modalLeadEls.btnNovo.addEventListener("click", () => abrirModalLead(null));
+modalLeadEls.btnFechar.addEventListener("click", fecharModalLead);
+modalLeadEls.btnCancelar.addEventListener("click", fecharModalLead);
+modalLeadEls.overlay.addEventListener("click", (e) => {
+  if (e.target === modalLeadEls.overlay) fecharModalLead();
+});
+modalLeadEls.form.addEventListener("submit", onSubmitLead);
+modalLeadEls.btnExcluir.addEventListener("click", () => {
+  const id = document.getElementById("l-id").value;
+  excluirLead(id);
+});
+
+leadEls.tbody.addEventListener("click", (e) => {
+  const idExcluir = e.target.dataset.excluirLead;
+  if (idExcluir) {
+    excluirLead(idExcluir);
+    return;
+  }
+  const tr = e.target.closest("tr");
+  if (tr) {
+    const lead = encontrarLead(tr.dataset.id);
+    if (lead) abrirModalLead(lead);
+  }
+});
 
 function renderKanban(filtrados) {
   leadEls.viewKanban.innerHTML = KANBAN_COLUNAS.map((statusKey) => {
