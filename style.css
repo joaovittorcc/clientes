@@ -1,12 +1,14 @@
 :root {
-  --bg: #0d1117;
-  --bg-elevated: #161b22;
-  --bg-card: #1c2129;
-  --border: #2a2f3a;
+  --bg: #071a2e;
+  --bg-elevated: #0c2340;
+  --bg-card: #0f2c4e;
+  --border: #1c3f66;
   --text: #e6edf3;
-  --text-muted: #8b949e;
-  --accent: #4f8cff;
-  --accent-hover: #6fa1ff;
+  --text-muted: #8ba3c2;
+  --brand-dark: #042c53;
+  --brand-mid: #0c447c;
+  --accent: #378add;
+  --accent-hover: #56a0ec;
   --green: #3fb950;
   --yellow: #d29922;
   --red: #f85149;
@@ -30,6 +32,46 @@ body {
   max-width: 1100px;
   margin: 0 auto;
   padding: 32px 24px 64px;
+}
+
+.mainnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: linear-gradient(90deg, var(--brand-dark), var(--brand-mid));
+  border-bottom: 1px solid var(--border);
+}
+
+.mainnav .brand {
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.mainnav .nav-links {
+  display: flex;
+  gap: 4px;
+}
+
+.mainnav .nav-links a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.mainnav .nav-links a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mainnav .nav-links a.active {
+  color: #fff;
+  background: var(--accent);
 }
 
 .topbar {
