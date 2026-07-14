@@ -1,0 +1,17 @@
+{
+  "app.js": {
+    "mtime": 1783990447.8409584,
+    "ast_hash": "dc99c438c554155870171d2b64e6ecd5",
+    "semantic_hash": "dc99c438c554155870171d2b64e6ecd5"
+  },
+  "data.js": {
+    "mtime": 1783990447.8409584,
+    "ast_hash": "068d1492c6ca9910ab371f7d68429d21",
+    "semantic_hash": "068d1492c6ca9910ab371f7d68429d21"
+  },
+  "index.html": {
+    "mtime": 1783990447.8419614,
+    "ast_hash": "5f439738816bc112033d53bbe1f773ed",
+    "semantic_hash": "5f439738816bc112033d53bbe1f773ed"
+  }
+}
