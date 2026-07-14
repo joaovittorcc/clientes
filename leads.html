@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leads de Prospecção</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="leads-style.css" />
+</head>
+<body>
+  <nav class="mainnav">
+    <span class="brand">Evodev · Painel</span>
+    <div class="nav-links">
+      <a href="index.html">Clientes</a>
+      <a href="leads.html" class="active">Leads</a>
+    </div>
+  </nav>
+
+  <div class="app">
+    <header class="topbar">
+      <h1>Leads de Prospecção</h1>
+      <div class="topbar-actions">
+        <button id="btn-importar" class="btn btn-secondary">Importar CSV</button>
+        <button id="btn-novo-lead" class="btn btn-primary">+ Novo lead</button>
+      </div>
+    </header>
+
+    <section class="stats stats-leads">
+      <div class="stat-card">
+        <span class="stat-value" id="stat-total">0</span>
+        <span class="stat-label">Leads</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-a-contatar">0</span>
+        <span class="stat-label">A contatar</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-em-conversa">0</span>
+        <span class="stat-label">Em conversa</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-fechados">0</span>
+        <span class="stat-label">Fechados</span>
+      </div>
+      <div class="stat-card stat-destaque">
+        <span class="stat-value" id="stat-foco-dia">0</span>
+        <span class="stat-label">Alta prioridade · foco do dia</span>
+      </div>
+    </section>
+
+    <section class="toolbar">
+      <input type="text" id="busca-lead" placeholder="Buscar por nome ou telefone..." />
+      <select id="filtro-cidade">
+        <option value="">Todas as cidades</option>
+      </select>
+      <select id="filtro-nicho">
+        <option value="">Todos os nichos</option>
+      </select>
+      <select id="filtro-prioridade">
+        <option value="">Todas as prioridades</option>
+        <option value="Alta">Alta</option>
+        <option value="Média">Média</option>
+        <option value="Baixa">Baixa</option>
+      </select>
+      <select id="filtro-status-lead">
+        <option value="">Todos os status</option>
+        <option value="a_contatar">A contatar</option>
+        <option value="contatado">Contatado</option>
+        <option value="proposta_enviada">Proposta enviada</option>
+        <option value="fechado">Fechado</option>
+        <option value="perdido">Perdido</option>
+      </select>
+    </section>
+
+    <section class="view-toggle">
+      <button id="btn-view-lista" class="btn-toggle active">Lista</button>
+      <button id="btn-view-kanban" class="btn-toggle">Kanban</button>
+    </section>
+
+    <section id="view-lista" class="table-wrap">
+      <table id="tabela-leads">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Nicho</th>
+            <th>Cidade</th>
+            <th>Telefone</th>
+            <th>Avaliação</th>
+            <th>Prioridade</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tbody-leads"></tbody>
+      </table>
+      <p id="vazio-leads" class="vazio" hidden>Nenhum lead encontrado com esses filtros.</p>
+    </section>
+
+    <section id="view-kanban" class="kanban" hidden></section>
+  </div>
+
+  <div id="modal-lead-overlay" class="modal-overlay" hidden>
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modal-lead-title">Novo lead</h2>
+        <button id="btn-fechar-lead" class="btn-icon" aria-label="Fechar">&times;</button>
+      </div>
+      <form id="form-lead">
+        <input type="hidden" id="l-id" />
+        <div class="form-grid">
+          <label class="field">
+            <span>Nome *</span>
+            <input type="text" id="l-nome" required />
+          </label>
+          <label class="field">
+            <span>Nicho</span>
+            <input type="text" id="l-nicho" placeholder="Ex: Restaurante" />
+          </label>
+          <label class="field">
+            <span>Cidade</span>
+            <input type="text" id="l-cidade" />
+          </label>
+          <label class="field">
+            <span>Telefone</span>
+            <input type="text" id="l-telefone" placeholder="+55 64 99999-9999" />
+          </label>
+          <label class="field">
+            <span>Avaliação (0-5)</span>
+            <input type="number" id="l-avaliacao" min="0" max="5" step="0.1" />
+          </label>
+          <label class="field">
+            <span>Nº de avaliações</span>
+            <input type="number" id="l-n-avaliacoes" min="0" step="1" />
+          </label>
+          <label class="field">
+            <span>Prioridade</span>
+            <select id="l-prioridade">
+              <option value="Alta">Alta</option>
+              <option value="Média" selected>Média</option>
+              <option value="Baixa">Baixa</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Site confirmado?</span>
+            <select id="l-site-confirmado">
+              <option value="A verificar" selected>A verificar</option>
+              <option value="Sim">Sim</option>
+              <option value="Não">Não</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Status</span>
+            <select id="l-status">
+              <option value="a_contatar">A contatar</option>
+              <option value="contatado">Contatado</option>
+              <option value="proposta_enviada">Proposta enviada</option>
+              <option value="fechado">Fechado</option>
+              <option value="perdido">Perdido</option>
+            </select>
+          </label>
+          <label class="field field-full">
+            <span>Observações</span>
+            <textarea id="l-obs" rows="3" placeholder="O que rolou no contato..."></textarea>
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-excluir-lead" class="btn btn-danger" hidden>Excluir</button>
+          <div class="modal-footer-right">
+            <button type="button" id="btn-cancelar-lead" class="btn btn-secondary">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="modal-import-overlay" class="modal-overlay" hidden>
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Importar leads via CSV</h2>
+        <button id="btn-fechar-import" class="btn-icon" aria-label="Fechar">&times;</button>
+      </div>
+      <div class="import-body">
+        <p class="import-hint">
+          Cabeçalho esperado: <code>nome,nicho,cidade,telefone,avaliacao,n_avaliacoes,prioridade,site_confirmado,status</code>.
+          Leads com o mesmo nome + cidade de um já existente são ignorados.
+        </p>
+        <input type="file" id="import-file" accept=".csv,text/csv" />
+        <textarea id="import-texto" rows="8" placeholder="Ou cole o CSV aqui..."></textarea>
+        <div id="import-resultado" class="import-resultado" hidden></div>
+        <div class="modal-footer">
+          <div class="modal-footer-right">
+            <button type="button" id="btn-cancelar-import" class="btn btn-secondary">Fechar</button>
+            <button type="button" id="btn-confirmar-import" class="btn btn-primary">Importar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="leads-data.js"></script>
+  <script src="leads-app.js"></script>
+</body>
+</html>
