@@ -9,7 +9,7 @@
 
 .stat-destaque {
   border-color: var(--accent);
-  background: linear-gradient(135deg, rgba(55, 138, 221, 0.18), rgba(12, 68, 124, 0.18));
+  background: linear-gradient(135deg, var(--accent-soft), rgba(46, 230, 168, 0.03));
 }
 
 .stat-destaque .stat-value {
@@ -63,7 +63,7 @@
 }
 
 .badge-a_contatar {
-  background: rgba(55, 138, 221, 0.15);
+  background: var(--accent-soft);
   color: var(--accent);
 }
 
@@ -130,13 +130,32 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  background: none;
+  border: none;
+  font: inherit;
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   color: var(--text-muted);
-  padding-bottom: 8px;
+  padding: 0 0 8px;
   border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.kanban-col-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kanban-col-chevron {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  transition: transform 0.15s ease;
+  flex: 0 0 auto;
 }
 
 .kanban-col-count {
@@ -250,11 +269,24 @@
   font-size: 0.85rem;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .stats-leads {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .kanban {
     grid-template-columns: 1fr;
+  }
+
+  .kanban-col:not(.kanban-col-aberta) .kanban-cards {
+    display: none;
+  }
+
+  .kanban-col:not(.kanban-col-aberta) .kanban-col-chevron {
+    transform: rotate(-90deg);
+  }
+
+  .btn-toggle {
+    min-height: 44px;
   }
 }
