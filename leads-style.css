@@ -107,6 +107,10 @@
 }
 
 /* Kanban */
+.kanban[hidden] {
+  display: none;
+}
+
 .kanban {
   display: grid;
   grid-template-columns: repeat(5, minmax(220px, 1fr));
