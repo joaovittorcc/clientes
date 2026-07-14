@@ -308,6 +308,151 @@ leadEls.tbody.addEventListener("click", (e) => {
   }
 });
 
+// --- Import CSV ---
+
+function parseCsvTexto(texto) {
+  const linhas = [];
+  let linhaAtual = [];
+  let campoAtual = "";
+  let dentroDeAspas = false;
+
+  for (let i = 0; i < texto.length; i++) {
+    const char = texto[i];
+    const proximo = texto[i + 1];
+
+    if (dentroDeAspas) {
+      if (char === '"' && proximo === '"') {
+        campoAtual += '"';
+        i++;
+      } else if (char === '"') {
+        dentroDeAspas = false;
+      } else {
+        campoAtual += char;
+      }
+    } else if (char === '"') {
+      dentroDeAspas = true;
+    } else if (char === ",") {
+      linhaAtual.push(campoAtual);
+      campoAtual = "";
+    } else if (char === "\n" || char === "\r") {
+      if (char === "\r" && proximo === "\n") i++;
+      linhaAtual.push(campoAtual);
+      campoAtual = "";
+      if (linhaAtual.some((v) => v !== "")) linhas.push(linhaAtual);
+      linhaAtual = [];
+    } else {
+      campoAtual += char;
+    }
+  }
+  if (campoAtual !== "" || linhaAtual.length) {
+    linhaAtual.push(campoAtual);
+    linhas.push(linhaAtual);
+  }
+
+  if (linhas.length === 0) return [];
+  const cabecalho = linhas[0].map((c) => c.trim());
+  return linhas.slice(1).map((linha) => {
+    const obj = {};
+    cabecalho.forEach((chave, idx) => {
+      obj[chave] = (linha[idx] ?? "").trim();
+    });
+    return obj;
+  });
+}
+
+function chaveDedupe(nome, cidade) {
+  return `${slugifyLead(nome)}|${slugifyLead(cidade)}`;
+}
+
+function importarLeadsCsv(texto) {
+  const linhas = parseCsvTexto(texto);
+  const chavesExistentes = new Set(leads.map((l) => chaveDedupe(l.nome, l.cidade)));
+
+  let importados = 0;
+  let ignorados = 0;
+  let comErro = 0;
+
+  linhas.forEach((linha) => {
+    if (!linha.nome || !linha.nome.trim()) {
+      comErro++;
+      return;
+    }
+    const chave = chaveDedupe(linha.nome, linha.cidade);
+    if (chavesExistentes.has(chave)) {
+      ignorados++;
+      return;
+    }
+    chavesExistentes.add(chave);
+    leads.push({
+      id: gerarIdLead(linha.nome, linha.cidade),
+      nome: linha.nome.trim(),
+      nicho: (linha.nicho || "").trim(),
+      cidade: (linha.cidade || "").trim(),
+      telefone: (linha.telefone || "").trim(),
+      avaliacao: linha.avaliacao ? Number(linha.avaliacao) : null,
+      n_avaliacoes: linha.n_avaliacoes ? Number(linha.n_avaliacoes) : null,
+      prioridade: linha.prioridade || "Média",
+      site_confirmado: linha.site_confirmado || "A verificar",
+      status: linha.status || "a_contatar",
+      observacoes: "",
+      origem: "csv_import",
+      created_at: new Date().toISOString(),
+    });
+    importados++;
+  });
+
+  if (importados > 0) saveLeads(leads);
+  return { importados, ignorados, comErro, total: linhas.length };
+}
+
+const importEls = {
+  overlay: document.getElementById("modal-import-overlay"),
+  btnAbrir: document.getElementById("btn-importar"),
+  btnFechar: document.getElementById("btn-fechar-import"),
+  btnCancelar: document.getElementById("btn-cancelar-import"),
+  btnConfirmar: document.getElementById("btn-confirmar-import"),
+  file: document.getElementById("import-file"),
+  texto: document.getElementById("import-texto"),
+  resultado: document.getElementById("import-resultado"),
+};
+
+function abrirModalImport() {
+  importEls.texto.value = "";
+  importEls.file.value = "";
+  importEls.resultado.hidden = true;
+  importEls.overlay.hidden = false;
+}
+
+function fecharModalImport() {
+  importEls.overlay.hidden = true;
+}
+
+importEls.btnAbrir.addEventListener("click", abrirModalImport);
+importEls.btnFechar.addEventListener("click", fecharModalImport);
+importEls.btnCancelar.addEventListener("click", fecharModalImport);
+importEls.overlay.addEventListener("click", (e) => {
+  if (e.target === importEls.overlay) fecharModalImport();
+});
+
+importEls.file.addEventListener("change", () => {
+  const arquivo = importEls.file.files[0];
+  if (!arquivo) return;
+  const leitor = new FileReader();
+  leitor.onload = () => {
+    importEls.texto.value = String(leitor.result || "");
+  };
+  leitor.readAsText(arquivo);
+});
+
+importEls.btnConfirmar.addEventListener("click", () => {
+  const texto = importEls.texto.value.trim();
+  if (!texto) return;
+  const resultado = importarLeadsCsv(texto);
+  importEls.resultado.hidden = false;
+  importEls.resultado.textContent = `${resultado.importados} importado(s), ${resultado.ignorados} ignorado(s) por duplicidade, ${resultado.comErro} linha(s) com erro (de ${resultado.total} linhas lidas).`;
+  if (resultado.importados > 0) renderLeads();
+});
+
 function renderKanban(filtrados) {
   leadEls.viewKanban.innerHTML = KANBAN_COLUNAS.map((statusKey) => {
     const cards = filtrados.filter((l) => l.status === statusKey);
