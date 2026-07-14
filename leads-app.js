@@ -141,10 +141,104 @@ function atualizarStatsLeads() {
   ).length;
 }
 
+const STATUS_ORDER = ["a_contatar", "contatado", "proposta_enviada", "fechado"];
+const KANBAN_COLUNAS = ["a_contatar", "contatado", "proposta_enviada", "fechado", "perdido"];
+
+function encontrarLead(id) {
+  return leads.find((l) => l.id === id);
+}
+
+function mudarStatusLead(id, novoStatus) {
+  const lead = encontrarLead(id);
+  if (!lead) return;
+  lead.status = novoStatus;
+  lead.updated_at = new Date().toISOString();
+  saveLeads(leads);
+  renderLeads();
+}
+
+function avancarStatus(id) {
+  const lead = encontrarLead(id);
+  if (!lead) return;
+  const idx = STATUS_ORDER.indexOf(lead.status);
+  if (idx === -1 || idx >= STATUS_ORDER.length - 1) return;
+  mudarStatusLead(id, STATUS_ORDER[idx + 1]);
+}
+
+function voltarStatus(id) {
+  const lead = encontrarLead(id);
+  if (!lead) return;
+  if (lead.status === "perdido") {
+    mudarStatusLead(id, "a_contatar");
+    return;
+  }
+  const idx = STATUS_ORDER.indexOf(lead.status);
+  if (idx <= 0) return;
+  mudarStatusLead(id, STATUS_ORDER[idx - 1]);
+}
+
+function abrirModalLead() {
+  // implementado na etapa de CRUD manual
+}
+
+function renderKanban(filtrados) {
+  leadEls.viewKanban.innerHTML = KANBAN_COLUNAS.map((statusKey) => {
+    const cards = filtrados.filter((l) => l.status === statusKey);
+    const cardsHtml = cards
+      .map((l) => {
+        const prioridadeSlug = (l.prioridade || "média").toLowerCase();
+        const podeVoltar = statusKey !== "a_contatar";
+        const podeAvancar = statusKey !== "fechado" && statusKey !== "perdido";
+        const podePerder = statusKey !== "fechado" && statusKey !== "perdido";
+        const botoes = [];
+        if (podeVoltar) botoes.push(`<button type="button" class="kanban-btn" data-voltar="${l.id}">◀ Voltar</button>`);
+        if (podeAvancar) botoes.push(`<button type="button" class="kanban-btn" data-avancar="${l.id}">Avançar ▶</button>`);
+        if (podePerder) botoes.push(`<button type="button" class="kanban-btn perder" data-perder="${l.id}">Perdido</button>`);
+        return `
+          <div class="kanban-card" data-abrir="${l.id}">
+            <div class="kanban-card-nome">${escapeHtmlLead(l.nome)}</div>
+            <div class="kanban-card-meta">
+              ${escapeHtmlLead(l.nicho) || "-"} · ${escapeHtmlLead(l.cidade) || "-"}
+              <span class="badge badge-prioridade-${prioridadeSlug}">${escapeHtmlLead(l.prioridade)}</span>
+            </div>
+            <div class="kanban-card-actions">${botoes.join("")}</div>
+          </div>
+        `;
+      })
+      .join("");
+
+    return `
+      <div class="kanban-col">
+        <div class="kanban-col-header">
+          <span>${STATUS_LEAD_LABEL[statusKey]}</span>
+          <span class="kanban-col-count">${cards.length}</span>
+        </div>
+        <div class="kanban-cards">${cardsHtml}</div>
+      </div>
+    `;
+  }).join("");
+}
+
+leadEls.viewKanban.addEventListener("click", (e) => {
+  const idVoltar = e.target.dataset.voltar;
+  const idAvancar = e.target.dataset.avancar;
+  const idPerder = e.target.dataset.perder;
+  if (idVoltar) return voltarStatus(idVoltar);
+  if (idAvancar) return avancarStatus(idAvancar);
+  if (idPerder) return mudarStatusLead(idPerder, "perdido");
+
+  const card = e.target.closest("[data-abrir]");
+  if (card) {
+    const lead = encontrarLead(card.dataset.abrir);
+    if (lead) abrirModalLead(lead);
+  }
+});
+
 function renderLeads() {
   popularFiltros();
   const filtrados = leadsFiltrados();
   renderLista(filtrados);
+  renderKanban(filtrados);
   atualizarStatsLeads();
 }
 
