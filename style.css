@@ -274,17 +274,6 @@ tbody tr:last-child td {
   border-bottom: none;
 }
 
-.contato-linha {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.contato-linha .muted {
-  color: var(--text-muted);
-  font-size: 0.8rem;
-}
-
 .badge {
   display: inline-block;
   padding: 3px 10px;
@@ -336,6 +325,239 @@ tbody tr:last-child td {
   text-align: center;
   color: var(--text-muted);
   padding: 40px 20px;
+}
+
+.clientes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.cliente-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cliente-capa {
+  position: relative;
+  height: 110px;
+  background: linear-gradient(135deg, var(--bg-card-hover), var(--bg-card));
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cliente-capa-placeholder {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.cliente-status-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.cliente-card-body {
+  position: relative;
+  padding: 14px 16px;
+}
+
+.cliente-excluir {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 1.2rem;
+}
+
+.cliente-nome {
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding-right: 20px;
+}
+
+.cliente-telefone {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+.cliente-nota {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 7px 9px;
+  background: var(--bg);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.cliente-nota-texto {
+  color: var(--text);
+}
+
+.cliente-nota-input {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--accent);
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  padding: 4px 6px;
+  font-size: 0.8rem;
+  font-family: inherit;
+}
+
+.cliente-demo {
+  display: block;
+  margin-top: 8px;
+  padding: 7px 9px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(46, 230, 168, 0.3);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cliente-demo-vazio {
+  background: var(--bg);
+  border: 1px dashed var(--border);
+  color: var(--text-muted);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.cliente-valor-linha {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.cliente-valor {
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.cliente-valor-fechado {
+  color: var(--green);
+}
+
+.cliente-valor-label {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.cliente-progresso {
+  margin-top: 10px;
+}
+
+.cliente-progresso-topo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.cliente-progresso-barra {
+  height: 6px;
+  background: var(--bg);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.cliente-progresso-fill {
+  height: 100%;
+  background: var(--accent);
+}
+
+.cliente-checklist {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cliente-checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.cliente-checklist-feito {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.cliente-checklist-mais {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.cliente-checklist-mais:hover {
+  color: var(--accent);
+}
+
+.checklist-editor-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.checklist-editor-item:last-child {
+  border-bottom: none;
+}
+
+.checklist-editor-item span:nth-child(2) {
+  flex: 1;
+}
+
+.checklist-editor-remove {
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.checklist-editor-remove:hover {
+  color: var(--red);
+}
+
+.checklist-editor-add {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.checklist-editor-add input {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  font-size: 0.85rem;
+  font-family: inherit;
 }
 
 .modal-overlay {
@@ -472,6 +694,10 @@ tbody tr:last-child td {
 
   .stats {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .clientes-grid {
+    grid-template-columns: 1fr;
   }
 
   .form-grid {

@@ -49,24 +49,8 @@
       </select>
     </section>
 
-    <section class="table-wrap">
-      <table id="tabela-clientes">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Contato</th>
-            <th>Empresa</th>
-            <th>Serviço</th>
-            <th>Status</th>
-            <th>Valor</th>
-            <th>Pagamento</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="tbody-clientes"></tbody>
-      </table>
-      <p id="vazio" class="vazio" hidden>Nenhum cliente cadastrado ainda. Clique em "Novo cliente" para começar.</p>
-    </section>
+    <section class="clientes-grid" id="clientes-grid"></section>
+    <p id="vazio" class="vazio" hidden>Nenhum cliente cadastrado ainda. Clique em "Novo cliente" para começar.</p>
   </div>
 
   <div id="modal-overlay" class="modal-overlay" hidden>
@@ -107,8 +91,16 @@
             </select>
           </label>
           <label class="field">
-            <span>Valor (R$)</span>
-            <input type="number" id="f-valor" min="0" step="0.01" placeholder="0,00" />
+            <span>Valor mínimo (R$)</span>
+            <input type="number" id="f-valor-min" min="0" step="0.01" placeholder="0,00" />
+          </label>
+          <label class="field">
+            <span>Valor máximo (R$)</span>
+            <input type="number" id="f-valor-max" min="0" step="0.01" placeholder="0,00" />
+          </label>
+          <label class="field">
+            <span>Valor fechado (R$)</span>
+            <input type="number" id="f-valor-fechado" min="0" step="0.01" placeholder="Preencher ao fechar" />
           </label>
           <label class="field">
             <span>Pagamento</span>
@@ -118,6 +110,26 @@
               <option value="parcial">Parcial</option>
             </select>
           </label>
+          <label class="field field-full">
+            <span>Link da demo</span>
+            <input type="text" id="f-demo-url" placeholder="https://meuprojeto.vercel.app" />
+          </label>
+          <label class="field field-full">
+            <span>Nota rápida</span>
+            <input type="text" id="f-nota-rapida" placeholder="Lembrete curto..." />
+          </label>
+          <label class="field field-full">
+            <span>Foto de capa</span>
+            <input type="file" id="f-foto-capa" accept="image/*" />
+          </label>
+          <div class="field field-full">
+            <span>Checklist</span>
+            <div id="checklist-editor"></div>
+            <div class="checklist-editor-add">
+              <input type="text" id="f-checklist-novo" placeholder="Nova etapa..." />
+              <button type="button" id="btn-checklist-add" class="btn btn-secondary">Adicionar</button>
+            </div>
+          </div>
           <label class="field field-full">
             <span>Observações</span>
             <textarea id="f-obs" rows="3" placeholder="Anotações sobre o cliente..."></textarea>
@@ -133,6 +145,8 @@
       </form>
     </div>
   </div>
+
+  <input type="file" id="input-foto-capa" accept="image/*" hidden />
 
   <nav class="bottomnav">
     <a href="index.html" class="active">Clientes</a>
