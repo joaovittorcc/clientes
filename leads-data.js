@@ -15,7 +15,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Sem site próprio confirmado via busca (apenas Instagram). Setor Goiânia Viva.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.633Z"
+    "created_at": "2026-07-15T02:52:24.406Z"
   },
   {
     "id": "plena-saude-e-beleza-anapolis",
@@ -31,7 +31,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Clínica ativa desde 2005 (Plena Clínica Integrada de Medicina e Estética Ltda), Rua Barão do Rio Branco 573, Centro. Sem site próprio confirmado.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.406Z"
   },
   {
     "id": "spallita-anapolis",
@@ -47,7 +47,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Telefone fixo também: (62) 3706-1445. Sem site próprio confirmado (só Facebook/Instagram).",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "marfim-ambientes-goiania",
@@ -63,7 +63,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Móveis planejados alto padrão, atua em Goiânia/Aparecida de Goiânia. Sem site próprio confirmado.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "c-a-marmoraria-anapolis",
@@ -79,7 +79,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Bairro de Lourdes/Centro. Só aparece em diretórios + WhatsApp, sem site próprio.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "marmoraria-anapolina-anapolis",
@@ -95,7 +95,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Mais de 20 anos no mercado, CNPJ ativo. Sem site próprio confirmado (Facebook/Instagram).",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "marmoraria-brasil-anapolis",
@@ -111,7 +111,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Av. Pedro Ludovico, 3049. Sem site próprio confirmado, só Instagram.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "marceneiro-goiania-goiania",
@@ -127,7 +127,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Mais de 30 anos no ramo. Site atual é uma página gratuita do Google Sites (sites.google.com) — conta como site de baixo nível, não site profissional.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "recanto-santa-cecilia-eventos-anapolis",
@@ -143,7 +143,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Espaço para eventos. Sem site próprio confirmado, só Instagram.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "celebrare-casa-de-eventos-anapolis",
@@ -159,7 +159,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Aluguel de espaço para festas/eventos. Sem site próprio confirmado, só Instagram.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "otica-alta-vista-goiania",
@@ -175,7 +175,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Instagram e WhatsApp confirmados via busca; site próprio não encontrado, apenas linktr.ee/oticaaltavista (site de baixo nível)",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "bb-semijoias-goiania-goiania",
@@ -191,7 +191,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "WhatsApp e Instagram confirmados via busca; nenhum site .com.br próprio encontrado, vende só por Instagram/WhatsApp",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "luxury-acessorios-goiania",
@@ -207,7 +207,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Telefone via cadastro empresarial e Instagram (21 mil seguidores) confirmados; sem site próprio encontrado nas buscas",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "ouro-forte-joias-goiania",
@@ -223,7 +223,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Telefone/WhatsApp e Instagram confirmados via busca; nenhum site oficial encontrado",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "junio-joias-e-relogios-goiania",
@@ -239,7 +239,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "WhatsApp e Instagram confirmados via busca; sem site próprio, peças sob encomenda via WhatsApp",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "haus-tattoo-goiania",
@@ -255,7 +255,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "WhatsApp, Instagram e página no Facebook confirmados; nenhum site oficial encontrado nas buscas",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "nishimura-tattoo-studio-goiania",
@@ -271,7 +271,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "WhatsApp e Instagram confirmados via busca e matéria do blog Tattoo2me; sem site oficial dedicado",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "garuda-tatuagens-goiania",
@@ -287,7 +287,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Telefone e Instagram confirmados via busca; nenhum site próprio encontrado",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "robinho-tattoo-lab-goiania",
@@ -303,7 +303,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "WhatsApp confirmado via página do Facebook do estúdio e Instagram do tatuador; site é apenas linktr.ee/Tattoolab (site de baixo nível)",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "cleber-roberto-fotografia-goiania",
@@ -319,7 +319,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "WhatsApp e Instagram confirmados via matéria da Curta Mais sobre fotógrafos de ensaio gestante em Goiânia; sem site próprio encontrado",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "otica-vip-anapolis",
@@ -335,7 +335,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Sem site próprio identificado nas buscas (apenas diretórios); Instagram e telefone confirmados em diretórios locais.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "visotica-anapolis",
@@ -351,7 +351,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Loja local (não é franquia nacional); sem site próprio encontrado, Instagram com cerca de 21 mil seguidores confirmado.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "otica-costa-anapolis",
@@ -367,7 +367,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Sem site próprio encontrado; Instagram e Facebook confirmados.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "joalheria-itagiba-anapolis",
@@ -383,7 +383,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Joalheria tradicional (desde 1949/fundada 1986); sem site .com.br encontrado, Instagram e Facebook confirmados.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "pardal-tattoo-studio-anapolis",
@@ -399,7 +399,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Cerca de 17 mil seguidores no Instagram; sem site próprio encontrado, Facebook e WhatsApp confirmados.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "new-old-tattoo-art-anapolis",
@@ -415,7 +415,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Usa apenas link-in-bio (heylink.me) em vez de site próprio; Instagram, Facebook e telefone confirmados.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "seth-tattoo-anapolis",
@@ -431,7 +431,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Sem site oficial encontrado; Instagram com cerca de 14 mil seguidores e Facebook confirmados.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "perola-fotografia-anapolis",
@@ -447,7 +447,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Fotografia de casamentos, 15 anos e newborn; sem site próprio encontrado, telefone e Facebook confirmados.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "focus-locacao-de-ternos-e-fotografia-anapolis",
@@ -463,7 +463,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Locação de ternos com serviço de fotografia para casamentos/eventos; sem site próprio confirmado, Instagram e Facebook confirmados.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "wanessa-bueno-confeitaria-anapolis",
@@ -479,7 +479,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "WhatsApp confirmado em post do próprio Instagram; sem site próprio encontrado, Facebook também confirmado.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.634Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "confeitaria-delicias-da-vivi-anapolis",
@@ -495,7 +495,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Telefone confirmado em diretório local; sem site próprio encontrado, presença confirmada no Facebook.",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "festinha-express-goiania",
@@ -511,7 +511,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Sem site próprio encontrado; apenas Instagram (64 mil seguidores) confirmado nas buscas",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "valeria-junqueira-festas-goiania",
@@ -527,7 +527,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Telefone e Instagram/Facebook confirmados; nenhum site .com.br dedicado encontrado",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "opcao-cenografia-goiania",
@@ -543,7 +543,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Contato e Instagram com 7,6 mil seguidores confirmados; não achou site próprio",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "cris-medeiros-festas-goiania",
@@ -559,7 +559,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Telefone via listagem de empresas e perfil no Instagram/Facebook confirmados; sem site dedicado encontrado",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "ambientart-paisagismo-goiania",
@@ -575,7 +575,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Site encontrado é uma página gratuita no Wix; telefone/whatsapp e Instagram/Facebook confirmados",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "sidney-jardineiro-goiania",
@@ -591,7 +591,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Telefone/whatsapp e perfil no Instagram confirmados; nenhum site próprio encontrado",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "green-garden-jardins-verticais-goiania",
@@ -607,7 +607,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Telefone e Instagram com 15 mil seguidores confirmados; sem site dedicado encontrado nas buscas",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "elegance-buffet-anapolis",
@@ -623,7 +623,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Buffet e organização de festas sem site próprio; presença apenas via Instagram e diretórios locais",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "gasarope-festas-infantis-e-eventos-anapolis",
@@ -639,7 +639,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Site encontrado é apenas página gratuita Webnode de baixo nível, sem domínio próprio profissional",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "mobilite-studio-de-pilates-anapolis",
@@ -655,7 +655,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Sem site oficial encontrado; telefone e Instagram confirmados em múltiplas buscas",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "center-pilates-anapolis-anapolis",
@@ -671,7 +671,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Presença apenas via Instagram e Facebook, sem site dedicado localizado",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "debora-cristina-nutricionista-anapolis-anapolis",
@@ -687,7 +687,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Atendimento particular (emagrecimento/hipertrofia); sem site próprio, apenas Instagram com cerca de 36 mil seguidores",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "pet-stop-anapolis-anapolis",
@@ -703,7 +703,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Clínica 24h; não foi localizado site com domínio próprio da unidade",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "sobrancelhas-isadora-lima-goiania",
@@ -719,7 +719,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Telefone e Instagram confirmados via busca; endereço na Av Portugal Setor Oeste; sem site próprio encontrado",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "anna-karenina-sobrancelhas-goiania",
@@ -735,7 +735,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Telefone confirmado em diretórios (CNPJ/Econodata) e perfil Instagram localizado; sem site próprio dedicado encontrado",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "don-fernando-barbearia-goiania",
@@ -751,7 +751,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Telefone e WhatsApp confirmados em diretórios, Instagram ativo; sem site próprio encontrado",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "marcao-barbearia-goiania",
@@ -767,7 +767,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Telefone/WhatsApp e Instagram confirmados via busca; endereço no Setor Criméia Oeste; sem site próprio encontrado",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "oeste-barbearia-goiania",
@@ -783,7 +783,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "WhatsApp e Instagram confirmados; localizada no Setor Oeste; sem site próprio encontrado nos resultados",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "aninhas-nail-designer-anapolis",
@@ -799,7 +799,7 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Telefone confirmado em duas buscas independentes via página de agendamento apnt.app; Instagram confirmado; nenhum site próprio encontrado",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   },
   {
     "id": "studio-penelope-micropigmentacao-anapolis",
@@ -815,70 +815,6 @@ const SEED_LEADS = [
     "status": "a_contatar",
     "observacoes": "Telefone confirmado em três buscas independentes via diretórios locais; apenas Facebook e TikTok encontrados, sem site próprio",
     "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
-  },
-  {
-    "id": "centro-odonto-anapolis",
-    "nome": "Centro Odonto",
-    "nicho": "Odontologia",
-    "cidade": "Anápolis",
-    "telefone": "+55 62 98503-7650",
-    "redes_sociais": "",
-    "avaliacao": 4.9,
-    "n_avaliacoes": 79,
-    "prioridade": "Alta",
-    "site_confirmado": "Não",
-    "status": "a_contatar",
-    "observacoes": "Sem site próprio confirmado — aparece apenas em diretórios agregadores (Doctoralia, DentMap, Anápolis Club). Contato só por WhatsApp/telefone. Clínica independente, não é rede. Endereço: R. Luís França, 234 - Jundiaí, Anápolis - GO, 75110-760.",
-    "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
-  },
-  {
-    "id": "poesia-arquitetura-anapolis",
-    "nome": "Poesia Arquitetura",
-    "nicho": "Arquitetura",
-    "cidade": "Anápolis",
-    "telefone": "+55 62 99306-6273",
-    "redes_sociais": "linktr.ee/poesiaarquitetura",
-    "avaliacao": 5,
-    "n_avaliacoes": 13,
-    "prioridade": "Alta",
-    "site_confirmado": "Baixo",
-    "status": "a_contatar",
-    "observacoes": "Só Linktree, nenhum site dedicado encontrado. Escritório de arquitetura vive de mostrar projeto visualmente — Linktree não sustenta isso, fit forte pro portfólio/institucional. Endereço: London Eye Offices - Av. Sen. José Lourenço Dias - St. Central, Anápolis - GO, 75020-010.",
-    "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
-  },
-  {
-    "id": "anderson-junio-arquiteto-e-urbanista-anapolis",
-    "nome": "Anderson Junio Arquiteto e Urbanista",
-    "nicho": "Arquitetura",
-    "cidade": "Anápolis",
-    "telefone": "+55 62 99466-0696",
-    "redes_sociais": "@anderson_arquiteto",
-    "avaliacao": 5,
-    "n_avaliacoes": 26,
-    "prioridade": "Alta",
-    "site_confirmado": "Baixo",
-    "status": "a_contatar",
-    "observacoes": "Mais de 10 anos de mercado, atuação residencial/comercial/industrial. Sem site próprio — só Linktree (linktr.ee/andersonjunio_arq), Instagram com 2.107 seguidores, LinkedIn e Facebook. Junto com Poesia Arquitetura, indica arquitetos independentes em Anápolis sem site como nicho recorrente. Endereço: Condomínio Residencial Havilah - R. 22, Q. A - Nº 38, bloco 05, A44 - Chácaras Americanas, Anápolis - GO, 75103-205.",
-    "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
-  },
-  {
-    "id": "pedro-xavier-advogados-anapolis",
-    "nome": "Pedro Xavier Advogados",
-    "nicho": "Advocacia",
-    "cidade": "Anápolis",
-    "telefone": "+55 62 3702-0999",
-    "redes_sociais": "",
-    "avaliacao": 4.9,
-    "n_avaliacoes": 244,
-    "prioridade": "Alta",
-    "site_confirmado": "Não",
-    "status": "a_contatar",
-    "observacoes": "Sem site próprio confirmado — só diretórios jurídicos (Jusbrasil), registro CNPJ (CNPJ.biz) e Facebook modesto (113 curtidas). Negócio grande e ativo sem presença digital própria — bom fit pro pacote institucional: área de atuação, prova social (244 avaliações é argumento forte), contato direto. Endereço: R. do Carmo, 9 - Jundiaí, Anápolis - GO, 75113-050.",
-    "origem": "pesquisa_web",
-    "created_at": "2026-07-15T02:48:56.635Z"
+    "created_at": "2026-07-15T02:52:24.407Z"
   }
 ];
