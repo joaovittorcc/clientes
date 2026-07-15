@@ -55,9 +55,21 @@ function escapeHtml(str) {
 }
 
 function mesclarSeed(existentes, seed) {
+  const idsSeed = new Set(seed.map((c) => c.id));
   const idsExistentes = new Set(existentes.map((c) => c.id));
+
+  // Mantém clientes criados manualmente pelo usuário (ou sem origem definida,
+  // por compatibilidade com dados salvos antes deste campo existir), e
+  // qualquer cliente de seed que ainda existe na base atual (sem sobrescrever
+  // o que o usuário já editou).
+  const mantidos = existentes.filter(
+    (c) => (c.origem ?? "manual") === "manual" || idsSeed.has(c.id)
+  );
+
+  // Adiciona só os clientes de seed que ainda não existem na base local.
   const novos = seed.filter((c) => !idsExistentes.has(c.id));
-  return existentes.concat(novos);
+
+  return mantidos.concat(novos);
 }
 
 let clientes = mesclarSeed(loadClientes(), typeof SEED_CLIENTES !== "undefined" ? SEED_CLIENTES : []);
@@ -161,7 +173,7 @@ function onSubmit(e) {
     const idx = clientes.findIndex((c) => c.id === id);
     if (idx !== -1) clientes[idx] = { ...clientes[idx], ...dados };
   } else {
-    clientes.push({ id: crypto.randomUUID(), ...dados });
+    clientes.push({ id: crypto.randomUUID(), origem: "manual", ...dados });
   }
 
   saveClientes(clientes);

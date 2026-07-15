@@ -40,10 +40,23 @@ function saveLeads(leadsArr) {
   localStorage.setItem(LEADS_STORAGE_KEY, JSON.stringify(leadsArr));
 }
 
+const ORIGENS_PROPRIAS_DO_USUARIO = new Set(["manual", "csv_import"]);
+
 function mesclarSeedLeads(existentes, seed) {
+  const idsSeed = new Set(seed.map((l) => l.id));
   const idsExistentes = new Set(existentes.map((l) => l.id));
+
+  // Mantém leads criados/importados manualmente pelo usuário, e qualquer
+  // lead de seed que ainda existe na base atual (sem sobrescrever o que o
+  // usuário já editou, como status ou observações).
+  const mantidos = existentes.filter(
+    (l) => ORIGENS_PROPRIAS_DO_USUARIO.has(l.origem) || idsSeed.has(l.id)
+  );
+
+  // Adiciona só os leads de seed que ainda não existem na base local.
   const novos = seed.filter((l) => !idsExistentes.has(l.id));
-  return existentes.concat(novos);
+
+  return mantidos.concat(novos);
 }
 
 function escapeHtmlLead(str) {
