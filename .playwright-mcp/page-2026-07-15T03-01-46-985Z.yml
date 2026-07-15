@@ -1,0 +1,33 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]: Evodev · Painel
+    - generic [ref=e4]:
+      - link "Clientes" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+      - link "Leads" [ref=e6] [cursor=pointer]:
+        - /url: leads.html
+  - generic [ref=e7]:
+    - banner [ref=e8]:
+      - heading "Clientes" [level=1] [ref=e9]
+      - button "+ Novo cliente" [ref=e10] [cursor=pointer]
+    - generic [ref=e11]:
+      - generic [ref=e12]:
+        - generic [ref=e13]: "0"
+        - generic [ref=e14]: Clientes
+      - generic [ref=e15]:
+        - generic [ref=e16]: "0"
+        - generic [ref=e17]: Em andamento
+      - generic [ref=e18]:
+        - generic [ref=e19]: "0"
+        - generic [ref=e20]: Concluídos
+      - generic [ref=e21]:
+        - generic [ref=e22]: R$ 0,00
+        - generic [ref=e23]: A receber
+    - generic [ref=e24]:
+      - textbox "Buscar por nome, empresa ou serviço..." [ref=e25]
+      - combobox [ref=e26]:
+        - option "Todos os status" [selected]
+        - option "Em andamento"
+        - option "Concluído"
+        - option "Pausado"
+    - paragraph [ref=e28]: Nenhum cliente cadastrado ainda. Clique em "Novo cliente" para começar.
