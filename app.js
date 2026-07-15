@@ -48,6 +48,33 @@ function formatMoeda(valor) {
   return n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
+function migrarCliente(c) {
+  const migrado = { ...c };
+  if (migrado.valor !== undefined) {
+    if (migrado.valor_min === undefined) migrado.valor_min = migrado.valor;
+    if (migrado.valor_max === undefined) migrado.valor_max = migrado.valor;
+    delete migrado.valor;
+  }
+  if (migrado.valor_min === undefined) migrado.valor_min = null;
+  if (migrado.valor_max === undefined) migrado.valor_max = null;
+  if (migrado.valor_fechado === undefined) migrado.valor_fechado = null;
+  if (migrado.demo_url === undefined) migrado.demo_url = "";
+  if (migrado.nota_rapida === undefined) migrado.nota_rapida = "";
+  if (migrado.checklist === undefined) migrado.checklist = [];
+  if (migrado.foto_capa === undefined) migrado.foto_capa = null;
+  return migrado;
+}
+
+function formatarValorCliente(c) {
+  if (c.valor_fechado) {
+    return { texto: formatMoeda(c.valor_fechado), label: "fechado" };
+  }
+  if (c.valor_min || c.valor_max) {
+    return { texto: `${formatMoeda(c.valor_min)} – ${formatMoeda(c.valor_max)}`, label: "faixa" };
+  }
+  return { texto: "Valor a definir", label: "" };
+}
+
 function escapeHtml(str) {
   const div = document.createElement("div");
   div.textContent = str ?? "";
@@ -72,7 +99,7 @@ function mesclarSeed(existentes, seed) {
   return mantidos.concat(novos);
 }
 
-let clientes = mesclarSeed(loadClientes(), typeof SEED_CLIENTES !== "undefined" ? SEED_CLIENTES : []);
+let clientes = mesclarSeed(loadClientes(), typeof SEED_CLIENTES !== "undefined" ? SEED_CLIENTES : []).map(migrarCliente);
 saveClientes(clientes);
 
 function render() {
@@ -103,7 +130,7 @@ function render() {
       <td data-label="Empresa">${escapeHtml(c.empresa) || "-"}</td>
       <td data-label="Serviço">${escapeHtml(c.servico) || "-"}</td>
       <td data-label="Status"><span class="badge badge-${c.status}">${STATUS_LABEL[c.status] || c.status}</span></td>
-      <td data-label="Valor">${formatMoeda(c.valor)}</td>
+      <td data-label="Valor">${formatarValorCliente(c).texto}</td>
       <td data-label="Pagamento"><span class="badge badge-${c.pagamento}">${PAGAMENTO_LABEL[c.pagamento] || c.pagamento}</span></td>
       <td><span class="row-excluir" data-excluir="${c.id}" title="Excluir">&times;</span></td>
     </tr>
@@ -123,7 +150,7 @@ function atualizarStats() {
   els.statConcluido.textContent = clientes.filter((c) => c.status === "concluido").length;
   const aReceber = clientes
     .filter((c) => c.pagamento !== "pago")
-    .reduce((soma, c) => soma + (Number(c.valor) || 0), 0);
+    .reduce((soma, c) => soma + (Number(c.valor_fechado) || Number(c.valor_max) || 0), 0);
   els.statPendente.textContent = formatMoeda(aReceber);
 }
 
@@ -164,7 +191,6 @@ function onSubmit(e) {
     email: document.getElementById("f-email").value.trim(),
     servico: document.getElementById("f-servico").value.trim(),
     status: document.getElementById("f-status").value,
-    valor: document.getElementById("f-valor").value,
     pagamento: document.getElementById("f-pagamento").value,
     obs: document.getElementById("f-obs").value.trim(),
   };
